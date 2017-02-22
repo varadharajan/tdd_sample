@@ -1,11 +1,19 @@
 import provider
 import repository
 
+class InvalidTicketException(Exception):
+	pass
+
 class Ticket:
 	def __init__(self, name, seat, bus):
 		self.__name = name
 		self.__seat = seat
 		self.__bus = bus
+
+	def valid(self):
+		if self.__seat <= 0: raise InvalidTicketException()
+
+		return True
 
 class Service:
 	@staticmethod
