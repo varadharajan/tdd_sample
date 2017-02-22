@@ -23,3 +23,14 @@ class TestService(TestCase):
 		ticket = Ticket("varadha", -100, "Bus")
 		with self.assertRaises(InvalidTicketException):
 			Service.book(ticket)
+
+
+class TestTicket(TestCase):
+	def test_should_validate_tickets(self):
+		ticket = Ticket("varadha", 10, "Bus 1")
+		self.assertTrue(ticket.valid())
+
+	def test_raise_exception_if_ticket_is_invalid(self):
+		ticket = Ticket("varadha", -1, "Bus 2")
+		with self.assertRaises(InvalidTicketException):
+			ticket.valid()
