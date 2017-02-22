@@ -13,7 +13,7 @@ class TestProvider(TestCase):
 		ticket = Ticket("varadha", 1, "Bus 1")
 		
 		with requests_mock.Mocker() as m:
-			m.post('http://awesome-mq.com/', json={"status": "ok"})
+			m.post('http://awesome-mq.com/', json={"status": "ok"}, status_code=200)
 			self.assertTrue(publish(ticket))
 			self.assertTrue(m.called)
 
