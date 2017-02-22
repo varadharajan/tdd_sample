@@ -18,6 +18,9 @@ class Ticket:
 class Service:
 	@staticmethod
 	def book(ticket):
+
+		assert(ticket.valid() == True)
+
 		repository.persist(ticket)
 		provider.publish(ticket)
 		return True
