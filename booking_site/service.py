@@ -4,6 +4,9 @@ import repository
 class InvalidTicketException(Exception):
 	pass
 
+class BookingFailureException(Exception):
+	pass
+
 class Ticket:
 	def __init__(self, name, seat, bus):
 		self.__name = name
@@ -18,9 +21,10 @@ class Ticket:
 class Service:
 	@staticmethod
 	def book(ticket):
-
 		assert(ticket.valid() == True)
-
-		repository.persist(ticket)
-		provider.publish(ticket)
+		try:			
+			repository.persist(ticket)
+			provider.publish(ticket)
+		except: 
+			raise BookingFailureException()
 		return True
