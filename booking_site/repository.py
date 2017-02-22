@@ -1,0 +1,2 @@
+def persist(ticket):
+	pass

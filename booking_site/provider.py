@@ -1,0 +1,2 @@
+def publish(ticket):
+	pass
