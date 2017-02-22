@@ -1,2 +1,2 @@
 def publish(ticket):
-	pass
+	return True
