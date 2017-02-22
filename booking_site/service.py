@@ -1,3 +1,6 @@
+import provider
+import repository
+
 class Ticket:
 	def __init__(self, name, seat, bus):
 		self.__name = name
@@ -7,4 +10,6 @@ class Ticket:
 class Service:
 	@staticmethod
 	def book(ticket):
-		pass
+		repository.persist(ticket)
+		provider.publish(ticket)
+		return True
